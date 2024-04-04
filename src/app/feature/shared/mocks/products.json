@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop Dell Latitude B5480",
+    "category": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      }
+    ],
+    "brand": "DELL",
+    "creation_date": "8-15-98, 7:00 PM",
+    "available": true
+  },
+  {
+    "id": 2,
+    "name": "Apple iMac 27",
+    "category": [
+      {
+        "id": 1
+      },
+      {
+        "id": 3
+      }
+    ],
+    "brand": "Apple",
+    "creation_date": "8-15-98, 7:00 PM",
+    "available": false
+  }
+]

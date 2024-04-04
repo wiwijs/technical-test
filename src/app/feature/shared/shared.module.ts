@@ -1,11 +1,13 @@
 import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {ServicesModule} from "./services/services.module";
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    ServicesModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
