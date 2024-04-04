@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../shared/services/product.service";
-import {ProductInterface} from "../../shared/interfaces";
+import {CategoryInterface, ProductInterface} from "../../shared/interfaces";
 
 @Component({
   selector: 'app-dashboard',
@@ -9,14 +9,19 @@ import {ProductInterface} from "../../shared/interfaces";
 })
 export class DashboardComponent implements OnInit {
   products: ProductInterface[];
+  date_creation: Date;
 
   constructor(private productService: ProductService) {
+    this.date_creation = new Date();
   }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe((result) => {
-      console.log(result)
-      this.products = result
+    this.productService.getProducts().subscribe((products) => {
+      this.products = products
     });
+  }
+
+  getCategories(categories: CategoryInterface[])  {
+    return categories.map(category => category.category);
   }
 }

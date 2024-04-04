@@ -26,7 +26,7 @@ export class ProductModel implements ProductInterface {
   constructor(productInterface: ProductModelInterface) {
     this.id = productInterface.id;
     this.name = productInterface.name;
-    this.category = productInterface.category.map(x => new CategoryModel(x));
+    this.category = productInterface.category.map(category => new CategoryModel(category));
     this.brand = productInterface.brand;
     this.creation_date = productInterface.creation_date;
     this.available = productInterface.available;
