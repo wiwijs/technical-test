@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
 import {products} from "../mocks";
-import {ProductModel} from "../models";
 import {ProductInterface} from "../interfaces";
 
 @Injectable({
@@ -13,6 +12,6 @@ export class ProductService {
   }
 
   getProducts(): Observable<ProductInterface[]> {
-    return of(products.map(product => new ProductModel(product)));
+    return of(products);
   }
 }

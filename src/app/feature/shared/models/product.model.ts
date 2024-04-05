@@ -23,10 +23,10 @@ export class ProductModel implements ProductInterface {
   creation_date: string;
   available: boolean;
 
-  constructor(productInterface: ProductModelInterface) {
+  constructor(productInterface: ProductModelInterface, categoriesInterface: CategoryInterface[]) {
     this.id = productInterface.id;
     this.name = productInterface.name;
-    this.category = productInterface.category.map(category => new CategoryModel(category));
+    this.category = productInterface.category.map(category => new CategoryModel(category, categoriesInterface));
     this.brand = productInterface.brand;
     this.creation_date = productInterface.creation_date;
     this.available = productInterface.available;

@@ -1,27 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-import {ProductService} from "../../shared/services/product.service";
-import {CategoryInterface, ProductInterface} from "../../shared/interfaces";
+import {Component} from '@angular/core';
+import {CategoryInterface} from "../../shared/interfaces";
+import {SelectSnapshot} from "@ngxs-labs/select-snapshot";
+import {NomenclaturesState} from "../states/nomenclatures";
+import {NomenclaturesStateModelInterface} from "../states/nomenclatures/nomenclatures.model";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent implements OnInit {
-  products: ProductInterface[];
+export class DashboardComponent {
   date_creation: Date;
+  @SelectSnapshot(NomenclaturesState) public productState: NomenclaturesStateModelInterface;
 
-  constructor(private productService: ProductService) {
+  constructor() {
     this.date_creation = new Date();
   }
 
-  ngOnInit() {
-    this.productService.getProducts().subscribe((products) => {
-      this.products = products
-    });
-  }
-
-  getCategories(categories: CategoryInterface[])  {
+  getCategories(categories: CategoryInterface[]) {
     return categories.map(category => category.category);
   }
 }

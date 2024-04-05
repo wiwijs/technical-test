@@ -1,5 +1,4 @@
 import {CategoryInterface} from "../interfaces";
-import {categories} from "../mocks";
 
 interface CategoryInterfaceModel {
   id: number;
@@ -7,15 +6,14 @@ interface CategoryInterfaceModel {
 
 export class CategoryModel implements CategoryInterface {
   id: number;
-  category: string;
+  category: string | undefined;
 
-  constructor(categoryInterface: CategoryInterfaceModel) {
+  constructor(categoryInterface: CategoryInterfaceModel, categoriesInterfaces: CategoryInterface[]) {
     const category: CategoryInterface = {
       id: categoryInterface.id,
-      category: categories.filter(category => category.id === categoryInterface.id)[0].category
+      category: categoriesInterfaces.filter(category => category.id === categoryInterface.id)[0].category
     }
     this.id = category.id;
     this.category = category.category;
-
   }
 }
