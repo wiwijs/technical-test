@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ModalComponent } from './modal/modal.component';
-import { DatePickerModalComponent } from './date-picker-modal/date-picker-modal.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ModalComponent} from './modal/modal.component';
+import {DatePickerModalComponent} from './date-picker-modal/date-picker-modal.component';
 import {MaterialModule} from "../../material.module";
-
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -16,7 +16,10 @@ import {MaterialModule} from "../../material.module";
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
-export class ComponentsAuxiliarsModule { }
+export class ComponentsAuxiliarsModule {
+}

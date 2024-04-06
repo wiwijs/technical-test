@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {InstanceOptions, Modal, ModalInterface, ModalOptions} from "flowbite";
 import {convertDate} from "../../functions";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-date-picker-modal',
@@ -8,8 +9,13 @@ import {convertDate} from "../../functions";
   styleUrl: './date-picker-modal.component.scss'
 })
 export class DatePickerModalComponent {
-  selected: any;
-  value: any;
+  form: FormGroup = this.fb.group({
+    dateProduct: [new Date(), Validators.required],
+    timeProduct: ['00:00', Validators.required]
+  });
+
+  constructor(private fb: FormBuilder) {
+  }
 
   showModal() {
     const $modalElement: HTMLElement = document.querySelector('#timepicker-modal') as HTMLElement;
@@ -42,9 +48,16 @@ export class DatePickerModalComponent {
     modal.show();
   }
 
-  test() {
-    console.log(this.value)
-    convertDate(this.selected, this.value);
+  submit() {
+    if(!this.form.valid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+    convertDate(this.form.controls['dateProduct'].value, this.form.controls['timeProduct'].value);
+  }
+
+  updateFormDate(value: any) {
+    this.form.controls['dateProduct'].setValue(value);
   }
 
 }
