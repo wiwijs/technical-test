@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {ComponentsRoutingModule} from "./components-routing.module";
 import {StatesModule} from "./states/states.module";
+import {ComponentsAuxiliarsModule} from "../../shared/components/components.module";
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {StatesModule} from "./states/states.module";
   imports: [
     CommonModule,
     ComponentsRoutingModule,
-    StatesModule
+    StatesModule,
+    ComponentsAuxiliarsModule
   ]
 })
 export class ComponentsModule {

@@ -1,12 +1,12 @@
 import {State, Action, StateContext, Selector, NgxsOnInit, Store} from '@ngxs/store';
 import {Injectable} from '@angular/core';
 import {GetNomenclatures} from './nomenclatures.actions';
-import {initNomenclaturesFn} from "../../../shared/functions";
+import {initNomenclaturesFn} from "../../../../shared/functions";
 import {NomenclaturesStateModel} from "./nomenclatures.model";
-import {ProductService} from "../../../shared/services/product.service";
+import {ProductService} from "../../../../shared/services/product.service";
 import {map, mergeMap} from "rxjs";
-import {CategoryService} from "../../../shared/services/category.service";
-import {ProductModel} from "../../../shared/models";
+import {CategoryService} from "../../../../shared/services/category.service";
+import {ProductModel} from "../../../../shared/models";
 
 @State<NomenclaturesStateModel>({
   name: 'nomenclatures',

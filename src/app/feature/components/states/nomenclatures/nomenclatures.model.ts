@@ -1,4 +1,4 @@
-import {CategoryInterface, ProductInterface} from "../../../shared/interfaces";
+import {CategoryInterface, ProductInterface} from "../../../../shared/interfaces";
 
 export class NomenclaturesStateModel implements NomenclaturesStateModelInterface {
   products: ProductInterface[];
