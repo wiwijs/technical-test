@@ -13,6 +13,7 @@ import {Modal, ModalOptions, ModalInterface, InstanceOptions} from 'flowbite';
 export class DashboardComponent {
   date_creation: Date;
   @SelectSnapshot(NomenclaturesState) public productState: NomenclaturesStateModelInterface;
+  modal: ModalInterface;
 
   constructor() {
     this.date_creation = new Date();
@@ -31,15 +32,6 @@ export class DashboardComponent {
       backdropClasses:
         'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
       closable: true,
-      onHide: () => {
-        console.log('modal is hidden');
-      },
-      onShow: () => {
-        console.log('modal is shown');
-      },
-      onToggle: () => {
-        console.log('modal has been toggled');
-      },
     };
 
 // instance options object
@@ -48,8 +40,8 @@ export class DashboardComponent {
       override: true
     };
 
-    const modal: ModalInterface = new Modal($modalElement, modalOptions, instanceOptions);
+    this.modal = new Modal($modalElement, modalOptions, instanceOptions);
 
-    modal.show();
+    this.modal.show();
   }
 }
