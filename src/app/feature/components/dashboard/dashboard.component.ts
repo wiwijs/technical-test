@@ -6,6 +6,7 @@ import {NomenclaturesStateModelInterface} from "../states/nomenclatures/nomencla
 import {Modal, ModalOptions, ModalInterface, InstanceOptions} from 'flowbite';
 import {MatMenuTrigger} from "@angular/material/menu";
 import {ProductService} from "../../../shared/services/product.service";
+import {Emittable, Emitter} from "@ngxs-labs/emitter";
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +22,9 @@ export class DashboardComponent {
   someMethod() {
     this.trigger.openMenu();
   }
+
+  @Emitter(NomenclaturesState.deleteProduct)
+  public deleteProduct: Emittable<number>;
 
   constructor(private productService: ProductService) {
   }
@@ -53,5 +57,9 @@ export class DashboardComponent {
     }
 
     this.modal.show();
+  }
+
+  removeProduct(id: number) {
+    this.deleteProduct.emit(id);
   }
 }

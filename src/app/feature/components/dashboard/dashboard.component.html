@@ -63,7 +63,7 @@
                   <mat-icon>edit</mat-icon>
                   <span>Editar producto</span>
                 </button>
-                <button mat-menu-item>
+                <button mat-menu-item (click)="removeProduct(product.id)">
                   <mat-icon>delete</mat-icon>
                   <span>Eliminar producto</span>
                 </button>
