@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {InstanceOptions, Modal, ModalInterface, ModalOptions} from "flowbite";
-import {convertDate, convertStingToDate} from "../../functions";
+import {convertDate, convertStringToDate} from "../../functions";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {MatCalendar} from "@angular/material/datepicker";
 
 @Component({
   selector: 'app-date-picker-modal',
@@ -18,6 +19,10 @@ export class DatePickerModalComponent {
   @Input() setDate: string;
   @Input() errorButtonDate: boolean;
 
+  today = new Date();
+
+  @ViewChild(MatCalendar, {static: false}) calendar: MatCalendar<Date>;
+
   constructor(private fb: FormBuilder) {
   }
 
@@ -29,7 +34,7 @@ export class DatePickerModalComponent {
       backdrop: 'dynamic',
       backdropClasses:
         'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
-      closable: true
+      closable: false
     };
 
     const instanceOptions: InstanceOptions = {
@@ -38,10 +43,11 @@ export class DatePickerModalComponent {
     };
 
     this.modal = new Modal($modalElement, modalOptions, instanceOptions);
-
-    if (this.setDate !== '') {
-      this.form.controls['dateProduct'].setValue(convertStingToDate(this.setDate).date);
-      this.form.controls['timeProduct'].setValue(convertStingToDate(this.setDate).time);
+    this.calendar._goToDateInView(this.today, 'month');
+    if (this.setDate !== '' && this.setDate !== null) {
+      this.form.controls['dateProduct'].setValue(convertStringToDate(this.setDate).date);
+      this.form.controls['timeProduct'].setValue(convertStringToDate(this.setDate).time);
+      this.calendar._goToDateInView(this.form.controls['dateProduct'].value, 'month');
     }
 
     this.modal.show();

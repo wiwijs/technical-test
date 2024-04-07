@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from "rxjs";
+import {Observable, of, Subject} from "rxjs";
 import {products} from "../mocks";
 import {ProductInterface} from "../interfaces";
 
@@ -7,6 +7,9 @@ import {ProductInterface} from "../interfaces";
   providedIn: 'root'
 })
 export class ProductService {
+
+  productSubject = new Subject<ProductInterface | null>();
+  productSubject$ = this.productSubject.asObservable();
 
   constructor() {
   }

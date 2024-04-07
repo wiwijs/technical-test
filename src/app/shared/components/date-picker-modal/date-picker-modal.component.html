@@ -41,7 +41,7 @@
         <form role="form" [formGroup]="form">
           <mat-card class="demo-inline-calendar-card"
                     [ngClass]="{'!border-red-400 !border-2' : !form.controls['dateProduct'].valid && form.controls['dateProduct'].touched }">
-            <mat-calendar [selected]="form.controls['dateProduct'].value"
+            <mat-calendar [selected]="form.controls['dateProduct'].value" [maxDate]="today"
                           (selectedChange)="updateFormDate($event)"></mat-calendar>
           </mat-card>
           <div class="relative pt-4 pb-4">

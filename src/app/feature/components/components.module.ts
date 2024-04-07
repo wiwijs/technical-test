@@ -4,6 +4,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {ComponentsRoutingModule} from "./components-routing.module";
 import {StatesModule} from "./states/states.module";
 import {ComponentsAuxiliarsModule} from "../../shared/components/components.module";
+import {MaterialModule} from "../../material.module";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {ComponentsAuxiliarsModule} from "../../shared/components/components.modu
     CommonModule,
     ComponentsRoutingModule,
     StatesModule,
-    ComponentsAuxiliarsModule
+    ComponentsAuxiliarsModule,
+    MaterialModule
   ]
 })
 export class ComponentsModule {

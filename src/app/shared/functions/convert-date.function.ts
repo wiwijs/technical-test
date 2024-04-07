@@ -13,7 +13,7 @@ function convertHourMilitarToNormal(time: any): string {
   return time.join('');
 }
 
-export function convertStingToDate(dateParameter: string): {
+export function convertStringToDate(dateParameter: string): {
   date: Date, time: string
 } {
   const date: Date = new Date(dateParameter.split(', ')[0]);
