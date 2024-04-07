@@ -17,7 +17,7 @@ import {NomenclaturesState} from "./nomenclatures";
     NgxsStoragePluginModule.forRoot({
       storage: 0,
       key: [
-        'nomenclatures'
+        'nomenclatures',
       ],
       serialize: JSON.stringify,
       deserialize: JSON.parse,

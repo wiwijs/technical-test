@@ -1,2 +1,2 @@
-export * from './initialize-product.function';
+export * from './initialize-nomenclatures.function';
 export * from './convert-date.function';

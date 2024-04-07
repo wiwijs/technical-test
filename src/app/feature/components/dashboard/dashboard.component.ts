@@ -14,7 +14,7 @@ import {ProductService} from "../../../shared/services/product.service";
 })
 export class DashboardComponent {
   date_creation: Date;
-  @SelectSnapshot(NomenclaturesState) public productState: NomenclaturesStateModelInterface;
+  @SelectSnapshot(NomenclaturesState) public nomenclatures: NomenclaturesStateModelInterface;
   modal: ModalInterface;
 
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;

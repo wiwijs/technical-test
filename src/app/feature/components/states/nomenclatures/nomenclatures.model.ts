@@ -1,16 +1,16 @@
 import {CategoryInterface, ProductInterface} from "../../../../shared/interfaces";
 
 export class NomenclaturesStateModel implements NomenclaturesStateModelInterface {
-  products: ProductInterface[];
   categories: CategoryInterface[];
+  products: ProductInterface[];
 
   constructor(response: NomenclaturesStateModelInterface) {
-    this.products = response.products;
     this.categories = response.categories;
+    this.products = response.products;
   }
 }
 
 export interface NomenclaturesStateModelInterface {
-  products: ProductInterface[];
   categories: CategoryInterface[];
+  products: ProductInterface[];
 }
