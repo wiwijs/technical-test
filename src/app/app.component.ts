@@ -10,7 +10,7 @@ import {GetNomenclatures} from "./feature/components/states/nomenclatures";
 })
 export class AppComponent implements OnInit {
   title = 'my-hotel';
-
+  
   constructor(
     private store: Store
   ) {
