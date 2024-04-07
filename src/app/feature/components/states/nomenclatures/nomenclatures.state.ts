@@ -9,7 +9,7 @@ import {CategoryService} from "../../../../shared/services/category.service";
 import {ProductModel} from "../../../../shared/models";
 import {EmitterAction, Receiver} from "@ngxs-labs/emitter";
 import {ProductInterface} from "../../../../shared/interfaces";
-import {append, patch} from "@ngxs/store/operators";
+import {append, patch, updateItem} from "@ngxs/store/operators";
 
 @State<NomenclaturesStateModel>({
   name: 'nomenclatures',
@@ -73,5 +73,18 @@ export class NomenclaturesState implements NgxsOnInit {
         products: append<ProductInterface>([new ProductModel(product, getState().categories)])
       })
     );
+  }
+
+  @Receiver()
+  public static updateProduct({
+                                setState, getState
+                              }: StateContext<NomenclaturesStateModel>, {payload}: EmitterAction<ProductInterface>) {
+    const productList = getState().products.filter(product => product.id === payload.id);
+    if (productList.length > 0)
+      setState(
+        patch<NomenclaturesStateModel>({
+          products: updateItem<ProductInterface>(product => product === productList[0], new ProductModel(payload, getState().categories))
+        })
+      );
   }
 }

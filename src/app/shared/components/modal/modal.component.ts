@@ -26,9 +26,12 @@ export class ModalComponent {
   errorButtonDate = false;
   @Input() modal: ModalInterface;
   update = false;
+  productId = 0;
 
   @Emitter(NomenclaturesState.createProduct)
   public createProduct: Emittable<ProductInterface>;
+  @Emitter(NomenclaturesState.updateProduct)
+  public updateProduct: Emittable<ProductInterface>;
 
   constructor(private fb: FormBuilder, private productService: ProductService) {
     this.productService.productSubject$.subscribe(product => {
@@ -39,6 +42,7 @@ export class ModalComponent {
           return category.id
         }));
         this.form.controls['dateProduct'].setValue(product.creation_date);
+        this.productId = product.id;
         this.update = true;
       }
     })
@@ -60,7 +64,7 @@ export class ModalComponent {
       category: [],
       creation_date: this.form.controls['dateProduct'].value,
       available: false,
-      id: 0
+      id: this.productId
     }
     const categoriesId = this.form.controls['categoriesProduct'].value;
     categoriesId.map((id: number) => {
@@ -69,7 +73,10 @@ export class ModalComponent {
           id: id
         });
     })
-    this.createProduct.emit(product);
+    if (this.update) {
+      this.updateProduct.emit(product);
+    } else
+      this.createProduct.emit(product);
     this.closeModal();
   }
 
@@ -78,6 +85,7 @@ export class ModalComponent {
     this.form.reset();
     this.errorButtonDate = false;
     this.update = false;
+    this.productId = 0;
     this.productService.productSubject.next(null);
   }
 }

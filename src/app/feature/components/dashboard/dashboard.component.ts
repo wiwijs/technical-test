@@ -13,7 +13,6 @@ import {ProductService} from "../../../shared/services/product.service";
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  date_creation: Date;
   @SelectSnapshot(NomenclaturesState) public nomenclatures: NomenclaturesStateModelInterface;
   modal: ModalInterface;
 
@@ -24,7 +23,6 @@ export class DashboardComponent {
   }
 
   constructor(private productService: ProductService) {
-    this.date_creation = new Date();
   }
 
   getCategories(categories: CategoryInterface[]) {
