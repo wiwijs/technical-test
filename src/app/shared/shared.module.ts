@@ -5,7 +5,6 @@ import {ComponentsAuxiliarsModule} from "./components/components.module";
 import {MaterialModule} from "../material.module";
 import {PipesModule} from "./pipes/pipes.module";
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -27,5 +26,4 @@ export class SharedModule {
       providers: []
     };
   }
-
 }

@@ -7,7 +7,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ToastComponent} from './toast/toast.component';
 import {AlertComponent} from './alert/alert.component';
 
-
 @NgModule({
   declarations: [
     ModalComponent,
