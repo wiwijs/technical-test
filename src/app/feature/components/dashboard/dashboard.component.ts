@@ -19,10 +19,6 @@ export class DashboardComponent {
 
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
-  someMethod() {
-    this.trigger.openMenu();
-  }
-
   @Emitter(NomenclaturesState.deleteProduct)
   public deleteProduct: Emittable<number>;
 

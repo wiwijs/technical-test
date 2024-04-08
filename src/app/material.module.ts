@@ -41,7 +41,7 @@ import {MatButtonModule} from "@angular/material/button";
   providers: [
     {
       provide: [STEPPER_GLOBAL_OPTIONS, MAT_DATE_LOCALE],
-      useValue: [{displayDefaultIndicatorType: false}, {useValue: 'en-GB'}],
+      useValue: [{displayDefaultIndicatorType: false}, {useValue: 'es-ES'}],
     },
   ],
 })

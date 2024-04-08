@@ -3,6 +3,7 @@ import {InstanceOptions, Modal, ModalInterface, ModalOptions} from "flowbite";
 import {convertDate, convertStringToDate} from "../../functions";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatCalendar} from "@angular/material/datepicker";
+import {DateAdapter} from "@angular/material/core";
 
 @Component({
   selector: 'app-date-picker-modal',
@@ -23,7 +24,8 @@ export class DatePickerModalComponent {
 
   @ViewChild(MatCalendar, {static: false}) calendar: MatCalendar<Date>;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private _adapter: DateAdapter<any>) {
+    this._adapter.setLocale('es-ES');
   }
 
   showModal() {
