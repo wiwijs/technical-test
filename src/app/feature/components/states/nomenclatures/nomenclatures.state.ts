@@ -63,9 +63,9 @@ export class NomenclaturesState implements NgxsOnInit {
       name: payload.name,
       brand: payload.brand,
       creation_date: payload.creation_date,
-      available: false,
+      available: payload.available,
       category: payload.category,
-      id: Math.floor((Math.random() * 6) + 1)
+      id: getState().products.length + 1
     };
 
     setState(

@@ -4,15 +4,19 @@ import {ModalComponent} from './modal/modal.component';
 import {DatePickerModalComponent} from './date-picker-modal/date-picker-modal.component';
 import {MaterialModule} from "../../material.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
+import {ToastComponent} from './toast/toast.component';
+import {AlertComponent} from './alert/alert.component';
 
 @NgModule({
   declarations: [
     ModalComponent,
-    DatePickerModalComponent
+    DatePickerModalComponent,
+    ToastComponent,
+    AlertComponent
   ],
   exports: [
-    ModalComponent
+    ModalComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
