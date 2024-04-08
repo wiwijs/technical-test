@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ServicesModule} from "./services/services.module";
 import {ComponentsAuxiliarsModule} from "./components/components.module";
 import {MaterialModule} from "../material.module";
+import {PipesModule} from "./pipes/pipes.module";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {MaterialModule} from "../material.module";
     MaterialModule
   ],
   exports: [
-    ComponentsAuxiliarsModule
+    ComponentsAuxiliarsModule,
+    PipesModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

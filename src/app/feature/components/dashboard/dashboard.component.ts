@@ -26,6 +26,9 @@ export class DashboardComponent {
   @Emitter(NomenclaturesState.deleteProduct)
   public deleteProduct: Emittable<number>;
 
+  idProductDelete = 0;
+  filter = '';
+
   constructor(private productService: ProductService) {
   }
 
@@ -59,7 +62,38 @@ export class DashboardComponent {
     this.modal.show();
   }
 
+  openAlert() {
+    const $modalElement: HTMLElement = document.querySelector('#popup-modal') as HTMLElement;
+
+    const modalOptions: ModalOptions = {
+      placement: 'bottom-right',
+      backdrop: 'dynamic',
+      backdropClasses:
+        'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
+      closable: false,
+    };
+
+// instance options object
+    const instanceOptions: InstanceOptions = {
+      id: 'popup-modal',
+      override: true
+    };
+
+    this.modal = new Modal($modalElement, modalOptions, instanceOptions);
+
+    this.modal.show();
+  }
+
   removeProduct(id: number) {
-    this.deleteProduct.emit(id);
+    this.idProductDelete = id;
+    this.openAlert();
+  }
+
+  closeAlert($event: { close: boolean, idProductDelete: number }) {
+    if ($event.close) {
+      this.deleteProduct.emit($event.idProductDelete);
+    }
+    this.modal.hide();
+    this.idProductDelete = 0;
   }
 }
